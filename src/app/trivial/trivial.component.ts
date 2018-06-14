@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { RequestService } from '../request.service';
 import { Card } from '../model/card';
 
@@ -18,19 +18,19 @@ export class TrivialComponent implements OnInit {
     this.getApiInfo();
   }
 
-  checkAnswer(index: number) {
-    console.log('index: ' + index);
-    this.cardArray[0].responded = true;
-    this.cardArray[0].answeredIndex = index;
-    if (this.cardArray[0].answers[index] === this.cardArray[0].correct_answer) {
-      this.cardArray[0].correct = true;
+  checkAnswer(cardIndex: number, answerIndex: number) {
+    console.log('index: ' + answerIndex);
+    this.cardArray[cardIndex].responded = true;
+    this.cardArray[cardIndex].answeredIndex = answerIndex;
+    if (this.cardArray[cardIndex].answers[answerIndex] === this.cardArray[cardIndex].correct_answer) {
+      this.cardArray[cardIndex].correct = true;
     }
   }
 
-  getClass(index: number) {
-    if (this.cardArray[0].answers[index] === this.cardArray[0].correct_answer) {
+  getClass(cardIndex: number, answerIndex: number): string {
+    if (this.cardArray[cardIndex].answers[answerIndex] === this.cardArray[cardIndex].correct_answer) {
       return 'btn btn-block btn-success';
-    } else if (this.cardArray[0].answeredIndex === index && !this.cardArray[0].correct) {
+    } else if (this.cardArray[cardIndex].answeredIndex === answerIndex && !this.cardArray[cardIndex].correct) {
       return 'btn btn-block btn-danger';
     } else {
       return 'btn btn-block btn-outline-secondary';

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RequestService {
 
-  baseURL = 'https://opentdb.com/api.php?amount=1';
+  baseURL = 'https://opentdb.com/api.php?amount=10';
 
   constructor(private http: HttpClient) { }
 
