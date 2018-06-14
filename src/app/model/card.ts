@@ -8,6 +8,7 @@ export class Card {
     answers: string[];
     responded: boolean;
     correct: boolean;
+    answeredIndex: number;
 
     constructor(data: any) {
         this.category = data.category;
@@ -17,6 +18,7 @@ export class Card {
         this.correct_answer = data.correct_answer;
         this.answers = data.incorrect_answers;
         this.answers.push(this.correct_answer);
+        this.answeredIndex = -1;
         this.responded = false;
         this.correct = false;
     }
