@@ -1,5 +1,16 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let card of cardArray; let cardIndex = index">
-    <app-card [card] = "card"></app-card>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{card.question}}</h5>
+        <div *ngIf="!card.responded">
+          <button type="button" class="btn btn-block btn-primary" *ngFor="let answer of card.answers; let i = index" (click)="checkAnswer(cardIndex, i)">{{answer}}</button>
+        </div>
+        <div *ngIf="card.responded">
+          <button type="button" [class]="getClass(cardIndex, i)" *ngFor="let answer of card.answers; let i = index" (click)="checkAnswer(i)"
+            disabled>{{answer}}</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
