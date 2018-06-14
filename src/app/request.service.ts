@@ -7,9 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class RequestService {
 
+  baseURL = 'https://opentdb.com/api.php?amount=1';
+
   constructor(private http: HttpClient) { }
 
-  getRequest(url: string): Observable<any> {
-    return this.http.get(url);
+  getRequest(url?: string): Observable<any> {
+
+    if (url) {
+      return this.http.get(url);
+    } else {
+      return this.http.get(this.baseURL);
+    }
   }
 }
