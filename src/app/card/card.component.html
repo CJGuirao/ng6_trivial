@@ -1,0 +1,12 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{card.question}}</h5>
+    <div *ngIf="!card.responded">
+      <button type="button" class="btn btn-block btn-primary" *ngFor="let answer of card.answers; let i = index" (click)="checkAnswer(i)">{{answer}}</button>
+    </div>
+    <div *ngIf="card.responded">
+      <button type="button" [class]="getClass(i)" *ngFor="let answer of card.answers; let i = index" (click)="checkAnswer(i)"
+        disabled>{{answer}}</button>
+    </div>
+  </div>
+</div>
